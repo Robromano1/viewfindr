@@ -1,16 +1,27 @@
-const Modal = ({ selectedImg, setSelectedImg }) => {
+import { motion } from "framer-motion";
 
-	const handleClick = (e) => {
-		if (e.target.classList.contains('backdrop')) {
-			setSelectedImg(null);
-		}
-	}
+const Modal = ({ selectedImg, setSelectedImg }) => {
+  const handleClick = (e) => {
+    if (e.target.classList.contains("backdrop")) {
+      setSelectedImg(null);
+    }
+  };
 
   return (
-    <div className="backdrop" onClick={handleClick}>
-      <img src={selectedImg} alt="full photo" />
-    </div>
+    <motion.div
+      className="backdrop"
+      onClick={handleClick}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <motion.img
+        src={selectedImg}
+        alt="full photo"
+        initial={{ y: "-100vh" }}
+        animate={{ y: 0 }}
+      />
+    </motion.div>
   );
 };
 
-export default Modal
+export default Modal;
