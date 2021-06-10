@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { projectFirestore } from "../firebase/config";
+import { projectFireStore } from "../firebase/config";
 
 // Collection parameter = document where we want to get images from
 const useFirestore = (collection) => {
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
-    const unsub = projectFirestore
+    const unsub = projectFireStore
       .collection(collection)
       .orderBy("createdAt", "desc")
       .onSnapshot((snap) => {
